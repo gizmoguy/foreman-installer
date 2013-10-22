@@ -15,7 +15,7 @@
 	url = https://github.com/theforeman/puppet-passenger.git
 [submodule "puppet"]
 	path = modules/puppet
-	url = https://github.com/theforeman/puppet-puppet.git
+	url = https://github.com/gizmoguy/puppet-puppet.git
 [submodule "xinetd"]
 	path = modules/xinetd
 	url = https://github.com/puppetlabs/puppetlabs-xinetd.git
