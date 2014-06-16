@@ -4,8 +4,17 @@ require 'highline/import'
 require 'yaml'
 require 'kafo'
 
+# base the answer file name on the file calling the
+# script.  This allows other programs to use their own
+# files if named based on their executable
+config_filename = File.basename($0) + ".yaml"
+
 # where to find answer file
-CONFIG_FILE = "config/foreman-installer.yaml"
+if File.exist?('config/' + config_filename)
+  CONFIG_FILE = 'config/' + config_filename   
+else
+  CONFIG_FILE = '/etc/foreman/' + config_filename
+end
 
 # helpers
 def module_enabled?(name)
@@ -44,23 +53,6 @@ end
 # Run the install
 @result = Kafo::KafoConfigure.run
 exit 0 if @result.nil? # --help invocation
-
-# Setup colors
-color_hash = {
-  :info => [:bold, :cyan, :on_black],
-  :bad  => [:bold, :red, :on_black],
-  :good => [:bold, :green, :on_black]
-}
-
-colors = HighLine::ColorScheme.new do |cs|
-  color_hash.each { |c,arr| cs[c] = arr }
-end
-
-nocolors = HighLine::ColorScheme.new do |cs|
-  color_hash.each { |c,arr| cs[c] = [] }
-end
-
-HighLine.color_scheme = Kafo::KafoConfigure.config.app[:colors] ? colors : nocolors
 
 # Puppet status codes say 0 for unchanged, 2 for changed succesfully
 if [0,2].include? @result.exit_code

@@ -16,7 +16,7 @@
 
 Name:       foreman-installer
 Epoch:      1
-Version:    1.4.0
+Version:    1.5.0
 Release:    1%{?dotalphatag}%{?dist}
 Summary:    Puppet-based installer for The Foreman
 Group:      Applications/System
@@ -30,7 +30,8 @@ BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:  noarch
 
-Requires:   %{?scl_prefix}rubygem-kafo >= 0.3.0
+Requires:   %{?scl_prefix}puppet >= 2.7.0
+Requires:   %{?scl_prefix}rubygem-kafo >= 0.4.0
 Requires:   %{?scl_prefix}rubygem-foreman_api >= 0.1.4
 
 %if %{?skip_generator:0}%{!?skip_generator:1}
@@ -44,6 +45,7 @@ Requires:   %{?scl_prefix}rubygem-highline
 
 BuildRequires: asciidoc
 BuildRequires: rubygem(rake)
+BuildRequires: %{?scl_prefix}puppet >= 2.7.0
 BuildRequires: %{?scl_prefix}rubygem-kafo
 
 %description
@@ -87,14 +89,19 @@ rake install \
 %{_mandir}/man8
 
 %changelog
-* Wed Jan 29 2014 Dominic Cleal <dcleal@redhat.com> - 1.4.0-1
-- Release 1.4.0
+* Fri May 09 2014 Dominic Cleal <dcleal@redhat.com> - 1.5.0-1
+- Release 1.5.0
 
-* Thu Jan 23 2014 Dominic Cleal <dcleal@redhat.com> - 1.4.0-0.2.RC2
-- Release 1.4.0-RC2
+* Mon Apr 28 2014 Dominic Cleal <dcleal@redhat.com> - 1.5.0-0.2.RC2
+- Release 1.5.0-RC2
 
-* Thu Jan 16 2014 Dominic Cleal <dcleal@redhat.com> - 1.4.0-0.1.RC1
-- Release 1.4.0-RC1
+* Thu Apr 17 2014 Dominic Cleal <dcleal@redhat.com> - 1.5.0-0.1.RC1
+- Release 1.5.0-RC1
+
+* Thu Jan 16 2014 Dominic Cleal <dcleal@redhat.com> - 1.5.0-0.develop
+- Bump to version 1.5-develop
+
+* Thu Nov 21 2013 Dominic Cleal <dcleal@redhat.com> - 1.4.0-0.develop
 - Bump and change versioning scheme (#3712)
 
 * Fri Nov 08 2013 Marek Hulan <mhulan[@]redhat.com> - 1.3.9999-4
