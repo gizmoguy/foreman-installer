@@ -1,5 +1,8 @@
 forge 'http://forge.puppetlabs.com'
 
+mod 'theforeman/puppet',        '>= 2.1.0 < 2.2.0',
+  :github_tarball => 'gizmoguy/puppet-puppet'
+
 # Temporary for Amazon Linux support (https://github.com/puppetlabs/puppetlabs-xinetd/issues/32)
 mod 'puppetlabs/xinetd',        :git => 'https://github.com/puppetlabs/puppetlabs-xinetd',
                                 :ref => '45acf010700044f806ddbd141afa03f8ebbc1881'
@@ -20,4 +23,3 @@ mod 'theforeman/tftp',          '>= 1.4.1 < 1.5.0'
 # Top-level modules
 mod 'theforeman/foreman',       '>= 2.1.0 < 2.2.0'
 mod 'theforeman/foreman_proxy', '>= 1.6.0 < 1.7.0'
-mod 'gizmoguy/puppet',          '>= 2.1.0 < 2.2.0'
